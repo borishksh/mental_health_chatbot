@@ -1,0 +1,19 @@
+{
+  "rule_only_slots": [],
+  "rule_only_loops": [
+    "see_form",
+    "story1_form",
+    "trigger1_form",
+    "feel_more_control_form",
+    "emotiom_form",
+    "trigger2_form",
+    "story_form",
+    "feeling1_form",
+    "activity_question_form",
+    "smell_form",
+    "touch_form",
+    "name_form",
+    "hear_form",
+    "story2_form"
+  ]
+}

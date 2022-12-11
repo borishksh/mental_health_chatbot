@@ -1,0 +1,767 @@
+version: "3.1"
+
+rules:
+  
+
+- rule: Greet
+  steps:
+  - intent: greet
+  - action: action_trigger
+  - action: action_name
+  - action: utter_greet_option
+
+- rule: Activate Name Form
+  steps:
+  - action: name_form
+  - active_loop: name_form
+
+- rule: Submit Name Form
+  condition:
+  - active_loop: name_form
+  steps:
+  - action: name_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: action_capitalize
+  - action: utter_greet_option
+
+- rule: check In sad path 1
+  steps:
+  - intent: check_in
+  - action: utter_greet
+
+- rule: check In sad path 2
+  steps:
+  - intent: mood_unhappy
+  - action: action_trigger
+  - action: utter_sad_2
+
+- rule: Activate feel more Form
+  steps:
+  - action: feel_more_control_form
+  - active_loop: feel_more_control_form
+
+- rule: Submit feel more Form
+  condition:
+  - active_loop: feel_more_control_form
+  steps:
+  - action: feel_more_control_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: utter_feel_more_control_repeat
+  - intent: maybe_later
+  - action: utter_feel_more_control_done
+  - action: action_favorite_relaxation
+
+- rule: Favorite Relaxation
+  steps:
+  - action: utter_favorite_relaxation
+  - intent: affirm
+  - action: action_favorite_relaxation_type
+
+- rule: Favorite Relaxation 1
+  steps:
+  - action: utter_favorite_relaxation
+  - intent: deny
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Self Care
+  steps:
+  - intent: self_care
+  - action: action_self_care
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Activities
+  steps:
+  - intent: activities
+  - action: action_activities
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Relaxation
+  steps:
+  - intent: relaxation
+  - action: action_relaxation
+  - action: action_slot_reset
+  - action: action_session_start
+  
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: action_trigger
+  - action: utter_goodbye
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: action_trigger
+  - action: utter_iamabot
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Activate Question Form
+  steps:
+  - action: activity_question_form
+  - active_loop: activity_question_form
+
+- rule: Submit Question Form
+  condition:
+  - active_loop: activity_question_form
+  steps:
+  - action: activity_question_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: action_activity
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Slow Diaphragmatic Breathing path 1
+  steps:
+  - intent: slow_diaphragmatic_breathing
+  - action: utter_slow_diaphragmatic_breathing_1
+
+- rule: Slow Diaphragmatic Breathing path 2
+  steps:
+  - action: utter_slow_diaphragmatic_breathing_1
+  - intent: maybe_later
+  - action: utter_slow_diaphragmatic_breathing_3
+
+- rule: Slow Diaphragmatic Breathing path 3
+  steps:
+  - action: utter_slow_diaphragmatic_breathing_3
+  - intent: maybe_later
+  - action: utter_slow_diaphragmatic_breathing_5
+
+- rule: Slow Diaphragmatic Breathing path 4
+  steps:
+  - action: utter_slow_diaphragmatic_breathing_5
+  - intent: maybe_later
+  - action: action_dia
+
+- rule: Slow Diaphragmatic Breathing path 5
+  steps:
+  - action: utter_slow_diaphragmatic_breathing_6
+  - intent: affirm
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Mindfulness Exercise path 1
+  steps:
+  - intent: mindfulness_exercise
+  - action: utter_mindfulness_exercise_1
+
+- rule: Mindfulness Exercise path 2
+  steps:
+  - action: utter_mindfulness_exercise_1
+  - intent: maybe_later
+  - action: utter_mindfulness_exercise_3
+
+- rule: Mindfulness Exercise path 3
+  steps:
+  - action: utter_mindfulness_exercise_3
+  - intent: maybe_later
+  - action: utter_mindfulness_exercise_5
+
+- rule: Mindfulness Exercise path 4
+  steps:
+  - action: utter_mindfulness_exercise_5
+  - intent: maybe_later
+  - action: action_mind
+
+- rule: Mindfulness Exercise path 5
+  steps:
+  - action: utter_mindfulness_exercise_6
+  - intent: affirm
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+
+- rule: Progressive Muscle Relaxation path 1
+  steps:
+  - intent: p_m_r
+  - action: utter_p_m_r_1
+
+- rule: Progressive Muscle Relaxation path 2
+  steps:
+  - action: utter_p_m_r_1
+  - intent: maybe_later
+  - action: utter_p_m_r_2
+
+- rule: Progressive Muscle Relaxation path 3
+  steps:
+  - action: utter_p_m_r_2
+  - intent: maybe_later
+  - action: utter_p_m_r_3
+
+- rule: Progressive Muscle Relaxation path 4
+  steps:
+  - action: utter_p_m_r_3
+  - intent: maybe_later
+  - action: action_pmr
+
+- rule: Progressive Muscle Relaxation path 6
+  steps:
+  - action: utter_p_m_r_6
+  - intent: affirm
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: sad control path 1
+  steps:
+  - intent: sad_control
+  - action: utter_sadness
+  - action: action_story2
+
+- rule: Story 2 Form
+  steps:
+  - action: story2_form
+  - active_loop: story2_form
+
+- rule: Story 2 Form 2
+  condition:
+  - active_loop: story2_form
+  steps:
+  - action: story2_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: utter_sadness_1
+  - action: action_favorite_relaxation
+
+- rule: anxiety control path 1
+  steps:
+  - intent: anxiety_control
+  - action: utter_anxiety
+  - action: action_story
+
+- rule: Story Form
+  steps:
+  - action: story_form
+  - active_loop: story_form
+
+- rule: Story Form 1
+  condition:
+  - active_loop: story_form
+  steps:
+  - action: story_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: utter_feel_more_control
+  - action: action_feel_more_control
+
+- rule: anger control path 1
+  steps:
+  - intent: anger_control
+  - action: utter_anger
+
+- rule: anger control path 2
+  steps:
+  - action: utter_anger
+  - intent: done
+  - action: utter_anger_1
+  - action: action_story1
+
+- rule: Story 1 Form
+  steps:
+  - action: story1_form
+  - active_loop: story1_form
+
+- rule: Story1 Form 1
+  condition:
+  - active_loop: story1_form
+  steps:
+  - action: story1_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: utter_manage_anger
+  - action: action_favorite_relaxation
+
+- rule: check In happy path 1
+  steps:
+  - intent: mood_great
+  - action: action_trigger
+  - action: utter_great
+
+- rule: check In happy path 2
+  steps:
+  - action: utter_great
+  - intent: affirm
+  - action: action_question
+
+- rule: check In happy path 3
+  steps:
+  - action: utter_great
+  - intent: deny
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: check In question path 1
+  steps:
+  - action: utter_question
+  - intent: affirm
+  - action: action_question
+
+- rule: check In question path 2
+  steps:
+  - action: utter_question
+  - intent: deny
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Get Energy path 1
+  steps:
+  - intent: getEnergy
+  - action: utter_getEnergy
+  - action: utter_getEnergy_1
+
+- rule: Get Energy path 2
+  steps:
+  - action: utter_getEnergy_1
+  - intent: halo_of_loves
+  - action: utter_halo_of_loves
+
+- rule: Get Energy path 3
+  steps:
+  - action: utter_halo_of_loves
+  - intent: halo_of_loves_did_it
+  - action: utter_halo_of_loves_1
+  - action: utter_halo_of_loves_2
+
+- rule: Get Energy path 4
+  steps:
+  - action: utter_halo_of_loves_2
+  - intent: maybe_later
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Get Energy path 5
+  steps:
+  - action: utter_halo_of_loves
+  - intent: maybe_later
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Get Energy path 7
+  steps:
+  - action: utter_getEnergy_1
+  - intent: connect_with_nature
+  - action: utter_connect_with_nature
+
+- rule: Get Energy path 8
+  steps:
+  - action: utter_connect_with_nature
+  - intent: maybe_later
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Get Energy path 10
+  steps:
+  - action: utter_getEnergy_1
+  - intent: hugs
+  - action: utter_hugs
+
+- rule: Get Energy path 11
+  steps:
+  - action: utter_hugs
+  - intent: hugs_done
+  - action: utter_hugs_done
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Get Energy path 12
+  steps:
+  - action: utter_hugs
+  - intent: maybe_later
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+
+- rule: Get Energy path 13
+  steps:
+  - action: utter_getEnergy_1
+  - intent: music_mode
+  - action: utter_music_mode
+
+- rule: Get Energy path 14
+  steps:
+  - action: utter_music_mode
+  - intent: music_mode_done
+  - action: utter_music_mode_done
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Get Energy path 15
+  steps:
+  - action: utter_music_mode
+  - intent: maybe_later
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Improve Self Esteem path 1
+  steps:
+  - intent: improveSelfEsteem
+  - action: utter_improveSelfEsteem
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: For Breakups Pack path 1
+  steps:
+  - intent: forBreakups
+  - action: utter_forBreakups
+
+- rule: For Breakups Pack path 2
+  steps:
+  - action: utter_forBreakups
+  - intent: done
+  - action: utter_forBreakups_1
+
+- rule: For Breakups Pack path 3
+  steps:
+  - action: utter_forBreakups_1
+  - intent: done
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: For Deep Sleep path 1
+  steps:
+  - intent: forDeepSleep
+  - action: utter_forDeepSleep
+
+- rule: For Deep Sleep path 1
+  steps:
+  - action: utter_forDeepSleep
+  - intent: done
+  - action: utter_forDeepSleep_1
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Sleep Stories path 1
+  steps:
+  - intent: sleepStories
+  - action: utter_sleepStories
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: Sleep Stories path 1
+  steps:
+  - intent: sleepSounds
+  - action: utter_sleepSounds
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: emdr path 1
+  steps:
+  - intent: emdr
+  - action: utter_emdr_1
+
+- rule: emdr path 2
+  steps:
+  - action: utter_emdr_1
+  - intent: done
+  - action: utter_emdr_2
+
+- rule: emdr path 3
+  steps:
+  - action: utter_emdr_2
+  - intent: done
+  - action: utter_emdr_3
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: not_react path 1
+  steps:
+  - intent: not_react
+  - action: utter_not_react_1
+
+- rule: not_react path 2
+  steps:
+  - action: utter_not_react_1
+  - intent: done
+  - action: utter_not_react_2
+  - action: action_trigger1
+
+- rule: trigger 1 Form
+  steps:
+  - action: trigger1_form
+  - active_loop: trigger1_form
+
+- rule: trigger 1 Form 1
+  condition:
+  - active_loop: trigger1_form
+  steps:
+  - action: trigger1_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: action_trigger_1
+
+- rule: trigger 1 1 Form
+  steps:
+  - action: trigger1_1_form
+  - active_loop: trigger1_1_form
+
+- rule: trigger 1 1 Form 1
+  condition:
+  - active_loop: trigger1_1_form
+  steps:
+  - action: trigger1_1_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: action_trigger2
+
+- rule: trigger 2 Form
+  steps:
+  - action: trigger2_form
+  - active_loop: trigger2_form
+
+- rule: trigger 2 Form 1
+  condition:
+  - active_loop: trigger2_form
+  steps:
+  - action: trigger2_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: action_trigger3
+
+- rule: trigger 2 1 Form
+  steps:
+  - action: trigger2_1_form
+  - active_loop: trigger2_1_form
+
+- rule: trigger 2 1 Form 1
+  condition:
+  - active_loop: trigger2_1_form
+  steps:
+  - action: trigger2_1_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: utter_not_react_3
+  - action: utter_not_react_4
+  - intent: done
+  - action: utter_not_react_5
+  - action: action_feeling1
+
+- rule: feeling 1 Form
+  steps:
+  - action: feeling1_form
+  - active_loop: feeling1_form
+
+- rule: feeling 1 Form 1
+  condition:
+  - active_loop: feeling1_form
+  steps:
+  - action: feeling1_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: utter_not_react_3
+  - action: utter_not_react_4
+  - intent: done
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: method_54321 path 1
+  steps:
+  - intent: method_54321
+  - action: utter_method_54321_1
+  - action: utter_method_54321_2
+
+- rule: method_54321 path 2
+  steps:
+  - action: utter_method_54321_2
+  - intent: done
+  - action: action_see
+
+- rule: see 1 Form
+  steps:
+  - action: see_form
+  - active_loop: see_form
+
+- rule: see 1 Form 1
+  condition:
+  - active_loop: see_form
+  steps:
+  - action: see_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: action_touch
+
+- rule: touch 1 Form
+  steps:
+  - action: touch_form
+  - active_loop: touch_form
+
+- rule: touch 1 Form 1
+  condition:
+  - active_loop: touch_form
+  steps:
+  - action: touch_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: action_hear
+
+- rule: hear 1 Form
+  steps:
+  - action: hear_form
+  - active_loop: hear_form
+
+- rule: hear 1 Form 1
+  condition:
+  - active_loop: hear_form
+  steps:
+  - action: hear_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: action_smell
+
+- rule: smell 1 Form
+  steps:
+  - action: smell_form
+  - active_loop: smell_form
+
+- rule: smell 1 Form 1
+  condition:
+  - active_loop: smell_form
+  steps:
+  - action: smell_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_trigger
+  - action: action_emotion_2
+
+- rule: emotion 1 form 2  
+  steps:
+  - action: utter_done
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+
+- rule: mindful_audio path 1
+  steps:
+  - intent: mindful_audio
+  - action: utter_mindful_audio
+
+- rule: mindful_audio path 2
+  steps:
+  - intent: 3_min
+  - action: utter_3_min
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: mindful_audio path 3
+  steps:
+  - intent: bodyscan
+  - action: utter_bodyscan
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: mindful_audio path 4
+  steps:
+  - intent: extended_3_min
+  - action: utter_extended_3_min
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: mindful_audio path 5
+  steps:
+  - intent: mindful_walking
+  - action: utter_mindful_walking
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: mindful_audio path 6
+  steps:
+  - intent: mindful_of_a_difficulty
+  - action: utter_mindful_of_a_difficulty
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: mindful_audio path 7
+  steps:
+  - intent: mindfulness_of_a_physical_discomfort
+  - action: utter_mindfulness_of_a_physical_discomfort
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: mindful_audio path 8
+  steps:
+  - intent: mindfulness_of_breath
+  - action: utter_mindfulness_of_breath
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: mindful_audio path 9
+  steps:
+  - intent: mindful_streching
+  - action: utter_mindful_streching
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start
+
+- rule: mindful_audio path 10
+  steps:
+  - intent: raisin_exercise
+  - action: utter_raisin_exercise
+  - action: utter_do_next
+  - action: action_slot_reset
+  - action: action_session_start

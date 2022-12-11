@@ -1,0 +1,837 @@
+version: '3.1'
+intents:
+- activities
+- affirm
+- anxiety_control
+- bot_challenge
+- check_in
+- connect_with_nature
+- deny
+- done
+- forBreakups
+- forDeepSleep
+- getEnergy
+- goodbye
+- greet
+- halo_of_loves
+- halo_of_loves_did_it
+- hugs
+- hugs_done
+- improveSelfEsteem
+- inform
+- maybe_later
+- mood_great
+- mood_unhappy
+- music_mode
+- music_mode_done
+- nlu_fallback
+- self_care
+- sleepSounds
+- sleepStories
+- relaxation
+- slow_diaphragmatic_breathing
+- mindfulness_exercise
+- p_m_r
+- anger_control
+- sad_control
+- emdr
+- not_react
+- method_54321
+- mindful_audio
+- 3_min
+- bodyscan
+- extended_3_min
+- mindful_walking
+- mindful_of_a_difficulty
+- mindfulness_of_a_physical_discomfort
+- mindfulness_of_breath
+- mindful_streching
+- raisin_exercise
+entities:
+- activity_question1
+- activity_question4
+- activity_question2
+- activity_question3
+- favorite_relaxation
+slots:
+  just_text:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: name_form
+        requested_slot: name
+  story:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: story_form
+        requested_slot: story
+  story1:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: story1_form
+        requested_slot: story1
+  story2:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: story2_form
+        requested_slot: story2
+  trigger1:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: trigger1_form
+        requested_slot: trigger1
+  trigger2:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: trigger2_form
+        requested_slot: trigger2
+  trigger1_1:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: trigger1_1_form
+        requested_slot: trigger1_1
+  trigger2_1:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: trigger2_1_form
+        requested_slot: trigger2_1
+  see:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: see_form
+        requested_slot: see
+  touch:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: touch_form
+        requested_slot: touch
+  hear:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: hear_form
+        requested_slot: hear
+  smell:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: smell_form
+        requested_slot: smell
+  emotion:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: smell_form
+        requested_slot: emotion
+  feeling1:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: feeling1_form
+        requested_slot: feeling1
+  feel_more_control:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: feel_more_control_form
+        requested_slot: feel_more_control
+  favorite_relaxation:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: favorite_relaxation
+  activity_question1:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: activity_question1
+  activity_question2:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: activity_question2
+  activity_question3:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: activity_question3
+  activity_question4:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: activity_question4
+forms:
+  name_form:
+    required_slots:
+    - name
+  story_form:
+    required_slots:
+    - story
+  story1_form:
+    required_slots:
+    - story1
+  story2_form:
+    required_slots:
+    - story2
+  trigger1_form:
+    required_slots:
+    - trigger1
+  trigger2_form:
+    required_slots:
+    - trigger2
+  trigger1_1_form:
+    required_slots:
+    - trigger1_1
+  trigger2_1_form:
+    required_slots:
+    - trigger2_1
+  feeling1_form:
+    required_slots:
+    - feeling1
+  see_form:
+    required_slots:
+    - see
+  touch_form:
+    required_slots:
+    - touch
+  hear_form:
+    required_slots:
+    - hear
+  smell_form:
+    required_slots:
+    - smell
+    - emotion
+  feel_more_control_form:
+    required_slots:
+    - feel_more_control
+  activity_question_form:
+    required_slots:
+    - activity_question1
+    - activity_question2
+    - activity_question3
+    - activity_question4
+responses:
+  utter_greet:
+  - text: |-
+          {name}, it's nice to see you!
+          
+          How's your day going so far? Good or Bad.
+    image: https://64.media.tumblr.com/tumblr_m8gotlPTum1qc4uvwo1_400.jpg
+  utter_sad_1:
+  - text: "Sounds like today didn't go well.\n\n
+      I'm here for you."
+  - text: "Somedays are bad than others\n\n
+      I'll try my best to help you."
+  - text: "I am so sorry things went like that for you\n\n
+      I'm here for you."
+  utter_sad_2:
+  - text: "How will describe what you're feeling right now?"
+    buttons:
+    - title: Anxiety
+      payload: /anxiety_control
+    - title: Anger
+      payload: /anger_control
+    - title: Sadness
+      payload: /sad_control
+  utter_sadness:
+  - text: |-
+          Being sad is also okay. Sometimes things are not in our control. It will pass.
+
+          {name} can you describe this for me?
+  utter_sadness_1:
+  - text: |-
+          That can be hard
+
+          Let me distract you for a bit, then.
+    image: https://64.media.tumblr.com/f9b772fc7c6fcae4c1a21a21f9eb6b53/597f9194e0f89e82-64/s500x750/46e16fe3efd43700c5c438c21d33fc52d0afa1e3.gifv
+  utter_anxiety:
+  - text: |-
+          A little anxiety helps us grow while too much of it can be a struggle. I can help you regain control.
+
+          Tell me what happened, {name}
+  utter_anger:
+  - text: |-
+          Everyone gets angry.
+
+          If you're experiencing overwhelming rage, though, it could be damaging your mental and physical health as well as your relationships with others.
+
+          Take a few deep breaths {name}
+
+          Tell me when you are ready.
+    buttons:
+    - title: I am ready
+      payload: /done
+  utter_anger_1:
+  - text: |-
+          Tell me what happened, {name}
+    image: https://64.media.tumblr.com/tumblr_lj3nsgHMJe1qc4uvwo1_400.gifv
+  utter_manage_anger:
+  - text: |-
+          Okay I hear you {name}.
+
+          Through a cute animation, it will teaches you to work on your negative emotions and make you notice the point you are stuck at.
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/tNsTy-j_sQs
+  utter_ask_name:
+  - text: What is your first name?
+  utter_greet_option:
+  - text: What shall we do today, {name}?
+    buttons:
+    - title: Self care
+      payload: /self_care
+    - title: Check in
+      payload: /check_in
+    - title: Activities
+      payload: /activities
+    - title: Relaxation
+      payload: /relaxation
+  utter_great:
+  - text: |-
+          Wow! that's great. I hope you feel even better today
+
+          Let's boost up your happiness with some fun activities
+
+          I will ask some questions about how you felt about certain things over the pass few days. Is that okay?
+    buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+  utter_question:
+  - text: I will ask some questions about how you felt about certain things over the pass few days. Is that okay?
+    buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+  utter_feel_more_control:
+  - text: "Everyone feels anxiety differently. Where in your body do you feel it?\n\n
+       For instance, some people may say, 'My anxiety is a warm, gray ball in the pit of my stomach' or 'It is a hot, red sphere in my chest'."
+    image: https://64.media.tumblr.com/bc187e7e6d582c7e058c147336355cfd/9a8561bb4ac84691-e9/s500x750/634a482153a95d88a9025e50b92f7b6d4dd4e79f.jpg
+  utter_ask_feel_more_control:
+  - text: Try to visualize your anxiety along these lines. What do you see, {name}?
+  utter_feel_more_control_repeat:
+  - text: |-
+          Now for the good part! Close your eyes and try changing this picture.
+
+          Change how it moves, slow it down. Shrink its size.
+
+          Try to move it away from your body. Imagine it fading.
+
+          Keep doing that until you feel like you can change how it feels.
+    buttons:
+    - title: Done
+      payload: /maybe_later
+  utter_feel_more_control_done:
+  - text: |-
+          As you play around with these sub-modalities, notice how the feeling itself changes.
+
+          Some changes will cause the anxiety to reduce and others may increase it.
+  utter_favorite_relaxation:
+  - text: Do you want to do your favorite relaxation exercise right now?
+    buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+  utter_getEnergy:
+  - text: |-
+          In times of uncertainty, pausing to look at the good things in our lives can help us stay positive. 
+    image: https://64.media.tumblr.com/9406c7a652222b4cb52dd9ff1dc7ba65/495e8237061980f6-dd/s500x750/7b045b25a2656174e47eef9edfddee858e00ccdd.jpg
+  utter_getEnergy_1:
+  - text: |-  
+          Here are some ways to help you reflect on the joys of life.
+    buttons:
+    - title: Halo of Loves
+      payload: /halo_of_loves
+    - title: Connect with Nature
+      payload: /connect_with_nature
+    - title: Hugs
+      payload: /hugs
+    - title: Music Mode
+      payload: /music_mode
+  utter_halo_of_loves:
+  - text: |-
+          This is a powerful and effective technique. Sit comfortably and think of someone you love deeply.
+
+          Send them a beam of loving kindness, creating a protective shield around them.
+
+          Do this for two minutes. Feel your heart expand, and feel the lightness.
+    buttons:
+    - title: Did it
+      payload: /halo_of_loves_did_it
+    - title: Maybe Later
+      payload: /maybe_later
+  utter_halo_of_loves_1:
+  - text: |-
+          Also, you can let them know that you're thinking about them
+
+          I've something for you that you can share.
+    image: https://64.media.tumblr.com/ee974aa63e199811badf57e50e5575e3/cdb4632a97129ee1-5f/s500x750/9c0d094ebafa6894038c171a2f376cee24f5dafe.gifv
+  utter_halo_of_loves_2:
+  - text: Have you shared it?
+    buttons:
+    - title: Shared
+      payload: /maybe_later
+    - title: Maybe Later
+      payload: /maybe_later
+  utter_connect_with_nature:
+  - text: "Try walking barefoot in the grass for 10 minutes. If that's not possible, go for a walk in green spaces: a park, or a tree-lined street."
+    buttons:
+    - title: Done
+      payload: /maybe_later
+    - title: Maybe Later
+      payload: /maybe_later
+  utter_hugs:
+  - text: Hug someone nearby you know. Hugs can instantly boost oxytocin levels, which heals feeling of loneliness and stress.
+    buttons:
+    - title: Done
+      payload: /hugs_done
+    - title: Maybe Later
+      payload: /maybe_later
+  utter_hugs_done:
+  - text: Hugs are the most natural form of sharing warmth and feelings.
+    image: https://64.media.tumblr.com/3e88270f3b8e3c5e11e7b1a99a7ec3d3/tumblr_plb287jtYs1qc4uvwo1_500.gifv
+  utter_music_mode:
+  - text: |-
+          'After silence, that which comes nearest to expressing the inexpressible is music' - Aldous Huxley
+
+          Try to remember any song that is associated with positive vibes or a good memory
+    buttons:
+    - title: Done
+      payload: /music_mode_done
+    - title: Maybe Later
+      payload: /maybe_later
+  utter_music_mode_done:
+  - text: Tune in to the song, sing with it move with it.
+  utter_improveSelfEsteem:
+  - text: |-
+          This exercise will help you feel grounded, be aware of your own strengths, and face the ups and downs of lide with stability.
+
+          Sit in a relaxed position and plug your earphones in before you begin.
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/bCUoOSv0uIE&t=18s
+  utter_forBreakups:
+  - text: |-
+          This exercise helps you connect to your loved one and to help you deal with your feelings about the loss.
+
+          Write a letter on a peice of paper to the one you lost. Take as many words as you can to express yourself.
+
+          Tell them how your're doing, how you feel and describe life without them.
+    buttons:
+    - title: Done
+      payload: /done
+  utter_forBreakups_1:
+  - text: |-
+          Now for PartB - Write a letter from them back to you.
+
+          Allow your mind to settle as you imagine what they would write back to you.
+
+          Put your pen on the paper and let them 'write you back'.
+
+          See if they have any comforting words for you.
+    buttons:
+    - title: Done
+      payload: /done
+  utter_forDeepSleep:
+  - text: |-
+          When we're anxious, our mind and body go on alert.
+
+          This technique helps you relax one muscle at a time. You'll need a comfortable place to relax and ideally some headphones for the audio.
+
+          Let me know when you are ready
+    buttons:
+    - title: I'm ready
+      payload: /done
+  utter_forDeepSleep_1:
+  - text: |-
+          Play and close your eyes.
+
+          As you listen, you will feel your mind and body letting go of stress.
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/h03l_BuBq14
+  utter_done:
+  - text: Now you are done.
+  utter_sleepStories:
+  - text: Play and close your eyes.
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/V4fBgXgxjjg
+  utter_sleepSounds:
+  - text: Play and close your eyes.
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/1ZYbU82GVz4
+  utter_emdr_1:
+  - text: EMDR focus alternating the emotion and thought process
+    buttons:
+    - title: Done
+      payload: /done
+  utter_emdr_2:
+  - text: |-
+          Now just think about a traumatic event.
+
+          Just think Don't play it in your head yet
+    buttons:
+    - title: Done
+      payload: /done   
+  utter_emdr_3:
+  - text: Now start playing the memory and observe the ball in the video simultaneously
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/u5D03LP7SKA  
+  utter_ask_trigger1_1:
+  - text: You can tell me about it
+  utter_ask_trigger2_1:
+  - text: You can tell me about it
+  utter_not_react_1:
+  - text: Let me help you get better at this
+    buttons:
+    - title: Yes
+      payload: /done
+  utter_not_react_2:
+  - text: So first make a list of the trigger that make you feel angry or upset.
+  utter_not_react_3:
+  - text: Now take a few strong breaths, follow the gif below
+    image: https://64.media.tumblr.com/ee974aa63e199811badf57e50e5575e3/cdb4632a97129ee1-5f/s500x750/9c0d094ebafa6894038c171a2f376cee24f5dafe.gifv
+  utter_not_react_4:
+  - text: Tell me when you are done
+    buttons:
+    - title: Done
+      payload: /done
+  utter_not_react_5:
+  - text: Now lets talk about your strong feeling, the feeling that make you feel overwhelm
+  utter_ask_trigger1:
+  - text: Tell me your first trigger
+  utter_ask_trigger2:
+  - text: Tell me your second trigger
+  utter_ask_feeling1:
+  - text: Tell me about one such feeling 
+  utter_method_54321_1:
+  - text: Start breathe with the gif below.
+    image: https://64.media.tumblr.com/ee974aa63e199811badf57e50e5575e3/cdb4632a97129ee1-5f/s500x750/9c0d094ebafa6894038c171a2f376cee24f5dafe.gifv
+  utter_method_54321_2:
+  - text: Breathe in and out [3-4 time].
+    buttons:
+    - title: Done
+      payload: /done
+  utter_method_54321_3:
+  - text: Now look at your surrounding.
+  utter_ask_see:
+  - text: Tell me 5 things that you see in your surrounding.
+  utter_ask_touch:
+  - text: Now list 4 things you can touch in one sentence.
+  utter_ask_hear:
+  - text: Now tell me 3 things that you can hear in one sentence.
+  utter_ask_smell:
+  - text: Great going! Now tell me 2 things that you can smell.
+  utter_ask_emotion:
+  - text: Now to wrap up, tell me one emotes that you feel
+  utter_ask_activity_question1:
+  - text: Do you feel no interest or pleasure in doing things this day
+    buttons:
+    - title: Yes
+      payload: /inform{{"activity_question1":"yes"}}
+    - title: No
+      payload: /inform{{"activity_question1":"no"}}
+  utter_ask_activity_question2:
+  - text: Having trouble falling or staying asleep, or sleeping too much?
+    buttons:
+    - title: Yes
+      payload: /inform{{"activity_question2":"yes"}}
+    - title: No
+      payload: /inform{{"activity_question2":"no"}}
+  utter_ask_activity_question3:
+  - text: Have you been feeling down, depressed or hopeless this day
+    buttons:
+    - title: Yes
+      payload: /inform{{"activity_question3":"yes"}}
+    - title: No
+      payload: /inform{{"activity_question3":"no"}}
+  utter_ask_activity_question4:
+  - text: Do you feel tired or having little energy?
+    buttons:
+    - title: Yes
+      payload: /inform{{"activity_question4":"yes"}}
+    - title: No
+      payload: /inform{{"activity_question4":"no"}}
+  utter_do_next:
+  - text: What shall we do next, {name}?
+    buttons:
+    - title: Self care
+      payload: /self_care
+    - title: Check in
+      payload: /check_in
+    - title: Activities
+      payload: /activities
+    - title: Relaxation
+      payload: /relaxation
+  utter_slow_diaphragmatic_breathing_1:
+  - text: |-
+          Sit comfortably in a chair with your feet on the floor. You can lie down if you wish.
+
+          Fold your hands on your belly
+    buttons:
+    - title: Done
+      payload: /maybe_later
+  utter_slow_diaphragmatic_breathing_3:
+  - text: |-
+          Breathe in slowly and calmly. Fill up the belly with a normal breath.
+          
+          Try not to breathe in too heavily. The hands should move up when you breathe in, as if you are filling up a balloon. Avoid lifting the shoulders as you inhale; rather, breathe into the stomach. 
+          
+          Breathe out slowly to the count of '5'. Try to slow down the rate of the exhale. After the exhale, hold for 2-3 seconds before inhaling again. 
+    buttons:
+    - title: Done
+      payload: /maybe_later
+  utter_slow_diaphragmatic_breathing_5:
+  - text: |-
+          Work to continue to slow down the pace of the breath. 
+
+          Practice this for about 10 minutes. 
+          
+          This works best if you practice this two times each day for 10 minutes each time. Try to find a regular time to practice this each day. 
+    buttons:
+    - title: Done
+      payload: /maybe_later
+  utter_slow_diaphragmatic_breathing_6:
+  - text: Do you like this relaxation exercise? Do you want to make it your favorite?
+    buttons:
+    - title: Yes
+      payload: /affirm{{"favorite_relaxation":"slow_diaphragmatic_breathing"}}
+    - title: No
+      payload: /affirm
+  utter_mindfulness_exercise_1:
+  - text: |-
+          Sit quietly with your feet on the floor, or lie down, and relax your body. Begin with some slow, diaphragmatic breathing. Focus your mind on your breath as it flows in and out of your nostrils. Continue to follow your breath to whatever extent you can.
+          
+          As you breathe, notice the tendency of the mind to wander. Instead of trying to focus just on the breath, just notice what the mind does. It may wander to a worry, or a memory, or to what you plan to do later today. You may notice sensations in your body, such as a pain or itch. You may hear or smell things.
+          
+          Just notice whatever happens and then gently bring yourself back to your breath. You can remind yourself that you will tend to these other things later, and for now you will just spend time paying attention to your breath and to your mind.
+    buttons:
+    - title: Done
+      payload: /maybe_later
+  utter_mindfulness_exercise_3:
+  - text: |-
+          Allow the mind to wander as it will, time after time. Avoid the tendency to try hard to focus on something. Simply allow your mind to wander and then bring yourself back to your breath. Notice the tendency of your experience to change. Imagine that each thought, sensation, emotion—anything— is like a cloud floating through the sky, soon to be replaced by another one.  
+
+          Continue to practice this for about 10 minutes. Depending on your schedule you can add time to your practice if you want. Practice once or twice a day.
+    buttons:
+    - title: Done
+      payload: /maybe_later
+  utter_mindfulness_exercise_5:
+  - text: Remember that there is no 'right' way to do this, other than to just notice whatever comes into your consciousness. It is impossible to 'fail' at mindfulness—just let your mind wander!
+    buttons:
+    - title: Done
+      payload: /maybe_later
+  utter_mindfulness_exercise_6:
+  - text: Do you like this relaxation exercise? Do you want to make it your favorite?
+    buttons:
+    - title: Yes
+      payload: /affirm{{"favorite_relaxation":"mindfulness_exercise"}}
+    - title: No
+      payload: /affirm
+  utter_p_m_r_1:
+  - text: To get a taste of this, try tensing the muscles of the arms by 'flexing' your biceps. Tense your biceps hard enough to feel significant tension for between 5 and 7 seconds. 
+    buttons:
+    - title: Done
+      payload: /maybe_later
+  utter_p_m_r_2:
+  - text: Now let go, dropping your arm to your side. Feel the difference between the tension you just felt and the relaxation that is coming over your arm now. You may notice the feeling of blood flowing to the arm, and a feeling of warmth.
+    buttons:
+    - title: Continue
+      payload: /maybe_later
+  utter_p_m_r_3:
+  - text: |-
+          PMR involves doing this with each group of muscles in the body, as a regularly practiced exercise that takes effect over a period of time. 
+
+          This will take you about 16 minutes. 
+    buttons:
+    - title: Done
+      payload: /maybe_later
+  utter_p_m_r_6:
+  - text: Do you like this relaxation exercise? Do you want to make it your favorite?
+    buttons:
+    - title: Yes
+      payload: /affirm{{"favorite_relaxation":"p_m_r"}}
+    - title: No
+      payload: /affirm
+  utter_mindful_audio:
+  - text: Select your audio choice
+    buttons:
+    - title: 3-Minute-Breathing-Space
+      payload: /3_min
+    - title: Body-Scan
+      payload: /bodyscan
+    - title: Extended-3-Minute-Breathing-Space
+      payload: /extended_3_min
+    - title: Mindful- Walking
+      payload: /mindful_walking
+    - title: Mindfulness-of-a-Difficulty
+      payload: /mindful_of_a_difficulty
+    - title: Mindfulness-of-Physical-Discomfort
+      payload: /mindfulness_of_a_physical_discomfort
+    - title: Mindfulness-of-the-Breath
+      payload: /mindfulness_of_breath
+    - title: Mindful-Stretching
+      payload: /mindful_streching
+    - title: Raisin-Exercise
+      payload: /raisin_exercise
+  utter_3_min:
+  - text: Listen to this 3 minutes Breathing Space
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/I7TAfbZkRcs
+  utter_bodyscan:
+  - text: Listen to this audio to scan your body
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/T0nuKBVQS7M
+  utter_extended_3_min:
+  - text: Listen to an extended version of 3 minutes Breathing Space
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/amX1IuYFv8A
+  utter_mindful_walking:
+  - text: Mindfulness walking audio
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/ElHCp33OIOo
+  utter_mindful_of_a_difficulty:
+  - text: Mindfulness of a difficulty
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/nlEFKxGNPHk
+  utter_mindfulness_of_a_physical_discomfort:
+  - text: Mindfulness-of-Physical-Discomfort
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/dQjZdU9mRCA
+  utter_mindfulness_of_breath:
+  - text: Mindfulness-of-the-Breath
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/I-SFdhVwrVA
+  utter_mindful_streching:
+  - text: Mindful-Stretching
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/19FWt_iEFho
+  utter_raisin_exercise:
+  - text: Raisin-Exercise
+    attachment:
+      type: video
+      payload:
+        src: https://www.youtube.com/embed/oMQ7QqaHvW8
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+actions:
+- action_slot_reset
+- action_activities
+- action_activity
+- action_relaxation
+- action_name
+- action_question
+- action_self_care
+- action_story
+- action_story1
+- utter_anxiety
+- utter_do_next
+- utter_feel_more_control
+- utter_feel_more_control_done
+- utter_feel_more_control_repeat
+- utter_greet
+- utter_greet_option
+- action_feel_more_control
+- action_favorite_relaxation_type
+- action_favorite_relaxation
+- action_dia
+- action_mind
+- action_pmr
+- action_story2
+- action_capitalize
+- action_trigger1
+- action_trigger2
+- action_feeling1
+- action_see
+- action_touch
+- action_hear
+- action_smell
+- action_emotion
+- action_emotion_2
+- action_trigger
+- action_trigger3
+- action_trigger_1
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+config:
+  store_entities_as_slots: true

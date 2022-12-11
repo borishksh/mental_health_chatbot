@@ -1,0 +1,18 @@
+{
+    "Drawing":            ["no",  "no",  "no",  "no"],
+    "Playing video games":["no",  "no",  "no",  "yes"],
+    "Reading":            ["no",  "no",  "yes", "no"],
+    "Cooking":            ["no",  "no",  "yes", "yes"],
+    "Watching a movie":   ["no",  "yes", "no",  "no"],
+    "Shopping":           ["no",  "yes", "no",  "yes"],
+    "Exercise":           ["no",  "yes", "yes", "no"],
+    "Listening to music": ["no",  "yes", "yes", "yes"],
+    "Dinner out":         ["yes", "no",  "no",  "no"],
+    "Gardening":          ["yes", "no",  "no",  "yes"],
+    "Sport":              ["yes", "no",  "yes", "no"],
+    "Walking":            ["yes", "no",  "yes", "yes"],
+    "Cleaning":           ["yes", "yes", "no",  "no"],
+    "Running":            ["yes", "yes", "no",  "yes"],
+    "Dancing":            ["yes", "yes", "yes", "no"],
+    "Hiking":             ["yes", "yes", "yes", "yes"]
+}

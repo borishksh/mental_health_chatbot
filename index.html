@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+        </style>
+        <script type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <script>
+        !(function () {
+            let e = document.createElement("script"),
+                t = document.head || document.getElementsByTagName("head")[0];
+            (e.src =
+                "https://cdn.jsdelivr.net/npm/rasa-webchat@1.x.x/lib/index.js"),
+                // Replace 1.x.x with the version that you want
+                (e.async = !0),
+                (e.onload = () => {
+                    window.WebChat.default(
+                    {
+                        initPayload: "/greet",
+                        customData: { language: "en" },
+                        socketUrl: "http://localhost:5005",
+                        title: "Behaviour Activation Bot",
+                        showMessageDate: true,
+                        showFullScreenButton: true,
+                        onSocketEvent: {
+                            'bot_uttered': (response) => {
+                                if (response.quick_replies) {
+                                    document.getElementsByClassName('rw-sender')[0].style.display = 'none';
+                                    console.log(response);
+                                }
+                                if (!response.quick_replies) {
+                                    document.getElementsByClassName('rw-sender')[0].style.display = 'block';
+                                    console.log(response);
+                                }
+                            },
+                        },
+                        params: {
+                            storage: "session"
+                        }
+                        // add other props here
+                    },
+                    null
+                    );
+                }),
+            t.insertBefore(e, t.firstChild);
+        })();
+        </script>
+    </body>
+</html>

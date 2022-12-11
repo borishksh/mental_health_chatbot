@@ -1,0 +1,11 @@
+{
+  "rule_only_slots": [],
+  "rule_only_loops": [
+    "story1_form",
+    "story_form",
+    "story2_form",
+    "feel_more_control_form",
+    "name_form",
+    "activity_question_form"
+  ]
+}
