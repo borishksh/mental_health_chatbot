@@ -15,7 +15,7 @@ RUN apt-get update -qq && \
 
 # To install packages from PyPI
 COPY  ./requirements.txt /requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /requirements.txt
 
 # Copy actions folder to working directory
 COPY ./actions /app/actions
