@@ -1,5 +1,5 @@
 
-FROM rasa/rasa-sdk:3.1
+FROM rasa/rasa-sdk:3.6.2
 
 # Use subdirectory as working directory
 WORKDIR /app
