@@ -1,23 +1,6 @@
-
-FROM rasa/rasa-sdk:3.6.2
-
-# Use subdirectory as working directory
-WORKDIR /app
-
-# Change back to root user to install dependencies
-USER root
-
-# To install system dependencies
-RUN apt-get update -qq && \
-    apt-get install -y curl jq && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# To install packages from PyPI
-
-
-# Copy actions folder to working directory
-COPY ./actions /app/actions
-
-# Switch back to non-root to run code
-USER 1001
+FROM ubuntu:18.04
+ENTRYPOINT []
+RUN apt-get update && apt-get install -y python3 python3-pip && python3 -m pip install --no-cache --upgrade pip && pip3 install --no-cache rasa==3.2.7 --use-feature=2020-resolver
+ADD . /app/
+RUN chmod +x /app/start_services.sh
+CMD /app/start_services.sh
